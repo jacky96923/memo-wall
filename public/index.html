@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memo Wall</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div id="root">
+      <h1 class="title">網上連儂牆</h1>
+      <main>
+        <div id="formList">
+          <form
+            method="POST"
+            action="/memos"
+            enctype="multipart/form-data"
+            onsubmit="submitMemo(event)"
+          >
+            <div class="form-group">
+              <textarea class="card" name="content"></textarea>
+            </div>
+            <div class="form-group">
+              <input type="file" multiple name="images" />
+            </div>
+            <div class="form-group">
+              <input type="submit" value="Post on the Wall" />
+            </div>
+            <p class="message"></p>
+            <div class="form-group">
+              <input type="reset" value="Clear All" />
+            </div>
+          </form>
+          <form
+            id="loginForm"
+            method="POST"
+            action="/login"
+            onsubmit="submitLogin(event)"
+            hidden
+          >
+            <h1>連儂管理員專用</h1>
+            <div class="form-group">
+              <label> email: <input type="email" name="username" /> </label>
+            </div>
+            <div class="form-group">
+              <label>
+                password:
+                <input type="password" name="password" />
+              </label>
+            </div>
+            <div class="form-group">
+              <input type="submit" value="Login" />
+            </div>
+            <p class="message"></p>
+          </form>
+          <form
+            id="logoutForm"
+            method="POST"
+            action="/logout"
+            onsubmit="submitLogout(event)"
+            hidden
+          >
+            <h1>連儂管理員專用</h1>
+            <p class="message">你已登入為: <span class="username"></span></p>
+            <div class="form-group">
+              <input type="submit" value="Logout" />
+            </div>
+          </form>
+        </div>
+        <p id="cardListMessage"></p>
+        <div id="cardList">
+          <div class="card">
+            <div class="card-inner">
+              <div class="memo-content">香港加油</div>
+              <dialog>
+                <button onclick="hideDialog(this)">x</button>
+                <div>
+                  <img />
+                </div>
+              </dialog>
+              <div class="image-list">
+                <div class="image">
+                  <img
+                    loading="lazy"
+                    src="https://picsum.photos/600/800"
+                    onclick="showImage(this)"
+                  />
+                </div>
+                <img src="https://picsum.photos/800/600" />
+                <img src="https://picsum.photos/400/400" />
+              </div>
+            </div>
+            <div class="button-container">
+              <button class="remove-button">remove</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script>
+      function showImage(img) {
+        let card = img.closest('.card')
+        let dialog = card.querySelector('dialog')
+        dialog.open = true
+        dialog.querySelector('img').src = img.src
+      }
+      function hideDialog(button) {
+        let dialog = button.closest('dialog')
+        dialog.open = false
+      }
+    </script>
+    <script src="/memos.js"></script>
+    <script src="/script.js"></script>
+  </body>
+</html>

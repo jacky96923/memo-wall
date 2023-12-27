@@ -1,0 +1,63 @@
+.card {
+  width: 10rem;
+  height: 10rem;
+  background-color: yellow;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.card-inner {
+  overflow: auto;
+  flex-grow: 1;
+}
+.button-container {
+  height: 0;
+}
+.card img {
+  max-width: 100%;
+}
+.card button {
+  /* margin-top: 1rem; */
+  display: none;
+}
+[data-role="user"] .card button {
+  display: initial;
+}
+main {
+  display: flex;
+}
+#formList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+form {
+  background-color: red;
+  height: fit-content;
+}
+form input[type="file"],
+form h1,
+form label,
+form .message {
+  color: white;
+}
+form h1,
+form .message {
+  text-align: center;
+}
+.form-group {
+  text-align: center;
+  margin: 0rem 1rem 1rem;
+}
+#cardList {
+  display: flex;
+  flex-wrap: wrap;
+}
+#root {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+.title {
+  writing-mode: tb;
+}

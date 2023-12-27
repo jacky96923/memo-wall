@@ -1,0 +1,2 @@
+Knex just use '' for column name, easy for knex for translate to other database
+knex does not support char = table.specificType('password_hash', 'char(60)')
