@@ -23,7 +23,7 @@ userRouter.post("/login", async (req, res, next) => {
     let result = await client.query(
       /* sql */ `
     select "id" from "users"
-    where username = $1 and password = $2
+    where name = $1 and password = $2
   `,
       [username, password]
     );
