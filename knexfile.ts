@@ -22,12 +22,13 @@ const config: { [key: string]: Knex.Config } = {
     },
   },
 
-  staging: {
+  test: {
     client: "postgresql",
     connection: {
-      database: process.env.DB_NAME,
-      user: process.env.DB_USERNAME,
-      password: process.env.DB_PASSWORD,
+      host: process.env.POSTGRES_HOST,
+      database: process.env.POSTGRES_DB,
+      user: process.env.POSTGRES_USER,
+      password: process.env.POSTGRES_PASSWORD,
     },
     pool: {
       min: 2,
@@ -41,9 +42,9 @@ const config: { [key: string]: Knex.Config } = {
   production: {
     client: "postgresql",
     connection: {
-      database: "my_db",
-      user: "username",
-      password: "password",
+      database: process.env.DB_NAME,
+      user: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
     },
     pool: {
       min: 2,
